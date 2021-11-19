@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="words">
+    <item>aargh</item>
+    <item>about</item>
+    <item>acidic</item>
+    <item>acne</item>
+    <item>acrid</item>
+    <item>acute</item>
+    <item>alphabet</item>
+    </string-array>
+</resources>
