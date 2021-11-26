@@ -49,12 +49,6 @@ class WordAdapter(context: Context) :
 
         holder.curPhase.text = item
 
-        holder.curPhase.setOnClickListener {
-            val queryUrl: Uri = Uri.parse("${MainFragment.SEARCH_PREFIX}${item}")
-            val intent = Intent(Intent.ACTION_VIEW, queryUrl)
-            context.startActivity(intent)
-        }
-
     }
 
     companion object Accessibility : View.AccessibilityDelegate() {

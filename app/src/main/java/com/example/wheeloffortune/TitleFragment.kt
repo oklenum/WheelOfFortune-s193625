@@ -15,7 +15,6 @@ import com.example.wheeloffortune.databinding.FragmentTitleBinding
  * create an instance of this fragment.
  */
 class TitleFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     lateinit var binding:FragmentTitleBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +29,7 @@ class TitleFragment : Fragment() {
         binding = FragmentTitleBinding.inflate(inflater, container, false)
         binding.btnPlay.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_mainFragment)
+
         }
         // Inflate the layout for this fragment
         return binding.root
