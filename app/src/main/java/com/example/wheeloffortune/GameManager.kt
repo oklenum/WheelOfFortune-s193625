@@ -7,9 +7,9 @@ class GameManager {
     private var lettersUsed: String = ""
     private lateinit var underscoreWord: String
     private lateinit var wordToGuess: String
-    private var currentScore = 0
     private val maxLifes = 0
     private var currentLifes = 5
+    private var currentScore = 0
 
     fun startNewGame(): GameState {
         lettersUsed = ""
@@ -32,17 +32,21 @@ class GameManager {
         underscoreWord = stringBuilder.toString()
     }
 
-
+/*
     fun generateValue(value: Int) {
         var wheelOutcome = Values.values.random()
         var value = wheelOutcome
+        val scoreList = mutableListOf<Int>()
+        scoreList.add(value)
     }
+
+ */
 
 
 
     fun play(letter: Char): GameState {
         if (lettersUsed.contains(letter)) {
-            return GameState.Running(lettersUsed, underscoreWord, currentLifes)
+            return GameState.Running(lettersUsed, underscoreWord, currentLifes, currentScore)
         }
         lettersUsed += letter
         val indexes = mutableListOf<Int>()
@@ -63,7 +67,7 @@ class GameManager {
         }
 
         if (indexes.isNotEmpty()) {
-            currentScore = Values.values.random()
+            currentScore
         }
 
         underscoreWord = finalUnderscoreWord
@@ -80,6 +84,6 @@ class GameManager {
             return GameState.Lost(wordToGuess)
         }
 
-        return GameState.Running(lettersUsed, underscoreWord, currentLifes)
+        return GameState.Running(lettersUsed, underscoreWord, currentLifes, currentScore)
     }
 }

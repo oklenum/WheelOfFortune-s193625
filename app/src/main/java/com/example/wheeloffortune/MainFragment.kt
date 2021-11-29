@@ -1,6 +1,7 @@
 package com.example.wheeloffortune
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.GameManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -38,6 +39,8 @@ class MainFragment : Fragment() {
     private lateinit var currentLifesTextView : TextView
     private lateinit var currentScoreTextView: TextView
     private lateinit var wheelResultTextView: TextView
+    private var randomValue = Values.values.random()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,20 +61,34 @@ class MainFragment : Fragment() {
         gameLostTextView = binding.gameLostTextView
         wheelResultTextView = binding.wheelResultTextView
         currentScoreTextView = binding.currentScoreTextView
+        currentScoreTextView.visibility = View.VISIBLE
         currentLifesTextView = binding.currentLifesTextView
         currentLifesTextView.visibility = View.VISIBLE
         lettersLayout.visibility = View.GONE
+        wheelResultTextView.text = ("Spin to play!")
         newGame.setOnClickListener {
-            startNewGame()
-            Toast.makeText(activity,"New Game Started!", Toast.LENGTH_LONG).show()
+            val alertBuilder = AlertDialog.Builder(this.context)
+            alertBuilder.setMessage("Are you sure you want to start new game?")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { dialog, id ->
+                    startNewGame()
+                    Toast.makeText(activity,"New Game Started!", Toast.LENGTH_LONG).show()
+                }
+                .setNegativeButton("No") { dialog, id ->
+                    dialog.cancel()
+                }
+            val alert = alertBuilder.create()
+            alert.show()
         }
+
+
         val gameState = gameManager.startNewGame()
         updateUI(gameState)
 
         spinWheel.setOnClickListener {
-            spinWheel()
-            currentScoreTextView.text = "Current Score: ${spinWheel()}"
+                    spinWheel()
         }
+
 
         lettersLayout.children.forEach { letterView ->
             if (letterView is TextView) {
@@ -94,9 +111,11 @@ class MainFragment : Fragment() {
     private fun updateUI(gameState: GameState) {
         when (gameState) {
             is GameState.Running -> {
+                gameState.currentScore = 5000
                 wordTextView.text = gameState.underscoreWord
                 lettersUsedTextView.text = "Letters used: ${gameState.lettersUsed}"
                 currentLifesTextView.text = "Lifes left: ${gameState.currentLifes}"
+                currentScoreTextView.text = "Current Score: ${gameState.currentScore}"
             }
             is GameState.Won -> showGameWon(gameState.wordToGuess)
             is GameState.Lost -> showGameLost(gameState.wordToGuess)
@@ -122,23 +141,25 @@ class MainFragment : Fragment() {
         gameLostTextView.visibility = View.GONE
         gameWonTextView.visibility = View.GONE
         val gameState = gameManager.startNewGame()
+        wheelResultTextView.text = "Spin to play!"
         currentLifesTextView.visibility = View.VISIBLE
         lettersLayout.visibility = View.GONE
         lettersLayout.children.forEach { letterView ->
-            letterView.visibility = View.GONE
+            letterView.visibility = View.VISIBLE
         }
         updateUI(gameState)
     }
 
-    private fun spinWheel() {
-        val randomValue = Values.values.random()
+    fun spinWheel() {
+        var a = 0
+        //val randomValue = Values.values.random()
         wheelResultTextView.text = "Result: $randomValue"
+        //currentScoreTextView.text = "Current Score: "
         currentLifesTextView.visibility = View.VISIBLE
         lettersLayout.visibility = View.VISIBLE
-        lettersLayout.children.forEach { letterView ->
-            letterView.visibility = View.VISIBLE
-        }
     }
+
+
 
 
     override fun onDestroy() {
