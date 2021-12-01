@@ -1,14 +1,11 @@
 package com.example.wheeloffortune
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
-import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +20,7 @@ class WordAdapter(context: Context) :
 
         filteredWords = words
             .shuffled()
+            .take(5)
     }
 
     class WordViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
@@ -34,7 +32,7 @@ class WordAdapter(context: Context) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         val layout = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.word_view, parent, false)
+            .inflate(R.layout.rules_view, parent, false)
 
         layout.accessibilityDelegate = Accessibility
 

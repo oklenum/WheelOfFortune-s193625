@@ -10,16 +10,28 @@ class GameManager {
     private val maxLifes = 0
     private var currentLifes = 5
     private var currentScore = 0
+    private var randomValue: Int = 0
+    private var currentSpin = 0
+    val scoreList = mutableListOf<Int>()
 
     fun startNewGame(): GameState {
         lettersUsed = ""
         currentLifes = 5
         currentScore = 0
-        val randomIndex = Random.nextInt(0, Phases.words.size)
-        wordToGuess = Phases.words[randomIndex]
+        currentSpin = 0
+        scoreList.clear()
+        val randomIndex = Random.nextInt(0, Phases.phases.size)
+        wordToGuess = Phases.phases[randomIndex]
         generateUnderscores(wordToGuess)
+
         return getGameState()
     }
+    /*
+    fun getPhasesIndex(): Int {
+        val phaseIndex = wordToGuess.
+    }
+
+     */
     fun generateUnderscores(word: String) {
         val stringBuilder = StringBuilder()
         word.forEach { char ->
@@ -31,17 +43,6 @@ class GameManager {
         }
         underscoreWord = stringBuilder.toString()
     }
-
-/*
-    fun generateValue(value: Int) {
-        var wheelOutcome = Values.values.random()
-        var value = wheelOutcome
-        val scoreList = mutableListOf<Int>()
-        scoreList.add(value)
-    }
-
- */
-
 
 
     fun play(letter: Char): GameState {
@@ -67,12 +68,34 @@ class GameManager {
         }
 
         if (indexes.isNotEmpty()) {
-            currentScore
+            scoreList.add(randomValue)
         }
+
+        currentScore = scoreList.sum()
 
         underscoreWord = finalUnderscoreWord
         return getGameState()
 
+    }
+
+    fun spinValue(): Int {
+        randomValue = Values.values.random()
+
+        return randomValue
+    }
+
+    fun missTurn(): GameState {
+        currentLifes--
+
+        return getGameState()
+    }
+
+    fun bankrupt(): GameState {
+        scoreList.clear()
+        currentScore = scoreList.sum()
+
+
+        return getGameState()
     }
 
     private fun getGameState(): GameState {
@@ -80,7 +103,7 @@ class GameManager {
             return GameState.Won(wordToGuess)
         }
 
-        if (currentLifes == maxLifes) {
+        if (currentLifes <= 0) {
             return GameState.Lost(wordToGuess)
         }
 

@@ -10,20 +10,34 @@
         android:name="com.example.wheeloffortune.TitleFragment"
         android:label="fragment_title"
         tools:layout="@layout/fragment_title" >
-        <fragment
-        android:id="@+id/rulesFragment"
-        android:name="com.example.wheeloffortune.rulesList.RulesFragment"
-        android:label="fragment_rules"
-        tools:layout="@layout/fragment_rules" />
         <action
             android:id="@+id/action_titleFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_rulesFragment"
+            app:destination="@id/rulesFragment" />
 
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.wheeloffortune.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_rulesFragment"
+            app:destination="@id/rulesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="com.example.wheeloffortune.RulesFragment"
+        android:label="fragment_rules"
+        tools:layout="@layout/fragment_rules" >
+        <action
+            android:id="@+id/action_rulesFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_rulesFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
 
 </navigation>

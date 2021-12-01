@@ -29,7 +29,9 @@ class TitleFragment : Fragment() {
         binding = FragmentTitleBinding.inflate(inflater, container, false)
         binding.btnPlay.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_mainFragment)
-
+        }
+        binding.btnRules.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_rulesFragment)
         }
         // Inflate the layout for this fragment
         return binding.root
