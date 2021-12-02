@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">WheelOfFortune</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">s193625 WheelOfFortune</string>
     <string name="newGame">Start New Game</string>
     <string name="spinWheel">Spin Wheel</string>
 

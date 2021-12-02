@@ -21,6 +21,7 @@ class RulesFragment : Fragment() {
     private var _binding: FragmentRulesBinding? = null
     private val binding get() = _binding!!
     private lateinit var backButton: Button
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,18 +37,17 @@ class RulesFragment : Fragment() {
         _binding = FragmentRulesBinding.inflate(inflater,container,false)
         backButton = binding.backButton
         backButton.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_rulesFragment_to_mainFragment)
+            Navigation.findNavController(it).navigate(R.id.action_rulesFragment_to_titleFragment)
         }
         val view = binding.root
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val recyclerView = binding.recyclerView
+        recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = WordAdapter(requireContext())
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
 
     }
 

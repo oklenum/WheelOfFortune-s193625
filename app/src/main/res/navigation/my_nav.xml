@@ -33,9 +33,6 @@
         android:label="fragment_rules"
         tools:layout="@layout/fragment_rules" >
         <action
-            android:id="@+id/action_rulesFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
             android:id="@+id/action_rulesFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
     </fragment>

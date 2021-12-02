@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="words">
-    <item>aargh</item>
-    <item>about</item>
-    <item>acidic</item>
-    <item>acrid</item>
-    <item>acute</item>
-    <item>alphabet</item>
+    <string-array name="rules">
+    <item>Player spins the "Wheel"</item>
+    <item>Guess the random word/phrase</item>
+    <item>If the word/phrase contains the user-chosen letter,
+        any occurrences of the hidden letter will be revealed</item>
+    <item>If the letter is present, player will receive the amount of points equivalent
+        to the value drawn from spinning the wheel</item>
+    <item>If letter is not present, player will not receive any points and lose a life</item>
+    <item>If the spin value shows "Bankrupt", your score gets reset to zero</item>
+    <item>If the spin value shows "Miss Turn", you will lose a life</item>
+    <item>The game is simply won by guessing all the letters necessary to
+        reveal the entire word/phase with at least 1 life remaining</item>
+    <item>The game is lost when you have 0 lives remaining</item>
     </string-array>
 </resources>

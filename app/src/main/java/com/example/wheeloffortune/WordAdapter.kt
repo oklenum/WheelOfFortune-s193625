@@ -13,52 +13,37 @@ import androidx.recyclerview.widget.RecyclerView
 class WordAdapter(context: Context) :
     RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 
-    private val filteredWords: List<String>
+    private val rules: List<String>
 
     init {
-        val words = context.resources.getStringArray(R.array.words).toList()
+        val words = context.resources.getStringArray(R.array.rules).toList()
 
-        filteredWords = words
-            .shuffled()
-            .take(5)
+        rules = words
+
+
     }
 
     class WordViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val curPhase = view.findViewById<TextView>(R.id.word_view)
+        val rule = view.findViewById<TextView>(R.id.rules_view)
     }
 
-    override fun getItemCount(): Int = filteredWords.size
+    override fun getItemCount(): Int {
+        return rules.size
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
-        val layout = LayoutInflater
+        val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.rules_view, parent, false)
 
-        layout.accessibilityDelegate = Accessibility
-
-        return WordViewHolder(layout)
+        return WordViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
 
-        val item = filteredWords[position]
+        val item = rules[position]
+        holder.rule.text = item
 
-        val context = holder.view.context
-
-        holder.curPhase.text = item
-
-    }
-
-    companion object Accessibility : View.AccessibilityDelegate() {
-        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-        override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
-            super.onInitializeAccessibilityNodeInfo(host, info)
-            val customString = host?.context?.getString(R.string.app_name)
-            val customClick = AccessibilityNodeInfo.AccessibilityAction(
-                AccessibilityNodeInfo.ACTION_CLICK, customString
-            )
-            info?.addAction(customClick)
-        }
     }
 }
 

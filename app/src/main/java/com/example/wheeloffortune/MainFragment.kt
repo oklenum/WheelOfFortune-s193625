@@ -9,9 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -46,13 +48,7 @@ class MainFragment : Fragment() {
     private lateinit var currentLifesTextView : TextView
     private lateinit var currentScoreTextView: TextView
     private lateinit var wheelResultTextView: TextView
-    private lateinit var rulesButton: Button
-    private val randomValue: Int = 0
-    val currentScore = mutableListOf<Int>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +58,6 @@ class MainFragment : Fragment() {
       _binding = FragmentMainBinding.inflate(inflater, container, false)
         wordTextView = binding.wordTextView
         lettersUsedTextView = binding.lettersUsedTextView
-        rulesButton = binding.rulesButton
         spinWheel = binding.spinWheelButton
         newGame = binding.newGameButton
         lettersLayout = binding.lettersLayout
@@ -76,7 +71,6 @@ class MainFragment : Fragment() {
         currentLifesTextView.visibility = View.VISIBLE
 
         lettersLayout.visibility = View.GONE
-        //randomValue = Values.values.random()
         wheelResultTextView.text = ("Spin to play!")
         categoryTextView.text = Phases.categories[gameManager.getPhasesIndex()]
         newGame.setOnClickListener {
@@ -84,17 +78,14 @@ class MainFragment : Fragment() {
             alertBuilder.setMessage("Are you sure you want to start new game?")
                 .setCancelable(false)
                 .setPositiveButton("Yes") { _, _ ->
-                    startNewGame()
-                    Toast.makeText(activity,"New Game Started!", Toast.LENGTH_LONG).show()
+                    Navigation.findNavController(it).navigate(R.id.mainFragment)
+                    Toast.makeText(activity,"New Game Started!", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("No") { dialog, _ ->
                     dialog.cancel()
                 }
             val alert = alertBuilder.create()
             alert.show()
-        }
-        rulesButton.setOnClickListener{
-            Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_rulesFragment)
         }
 
 
@@ -123,10 +114,7 @@ class MainFragment : Fragment() {
                 val lostScore = gameManager.bankrupt()
                 updateUI(lostScore)
             }
-
         }
-
-
 
         lettersLayout.children.forEach { letterView ->
             if (letterView is TextView) {
@@ -172,9 +160,11 @@ class MainFragment : Fragment() {
         wordTextView.text = wordToGuess
         gameWonTextView.visibility = View.VISIBLE
         currentLifesTextView.visibility = View.VISIBLE
+        currentScoreTextView.text = "Current Score: ${gameManager.getWinResult()}"
         lettersLayout.visibility = View.GONE
     }
 
+    /*
     private fun startNewGame() {
         gameLostTextView.visibility = View.GONE
         gameWonTextView.visibility = View.GONE
@@ -190,9 +180,12 @@ class MainFragment : Fragment() {
         updateUI(gameState)
     }
 
+     */
+
 
     override fun onDestroy() {
         super.onDestroy()
+        _binding = null
 
     }
 

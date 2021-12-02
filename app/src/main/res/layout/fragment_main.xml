@@ -6,17 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainFragment">
 
-    <Button
-        android:id="@+id/rulesButton"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="275dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#348DB5"
-        android:text="Rules"
-        android:textColor="@color/white" />
-
     <ImageView
         android:id="@+id/wofLogoImageView"
         android:layout_width="232dp"
@@ -57,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Current Score:"
-        android:textColor="#BB4444"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="320dp"
@@ -70,12 +59,12 @@
         android:id="@+id/gameLostTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:rotation="-45"
         android:text="You Lost!"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="500dp"
         android:textColor="#BB4444"
-        android:textSize="36sp"
+        android:textSize="75sp"
+        android:fontFamily="sans-serif-condensed"
         android:textStyle="bold"
         android:visibility="gone"
         tools:visibility="visible" />
@@ -84,12 +73,12 @@
         android:id="@+id/gameWonTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:rotation="-45"
         android:text="You Won!"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="500dp"
         android:textColor="#44BB44"
-        android:textSize="36sp"
+        android:textSize="75sp"
+        android:fontFamily="sans-serif-condensed"
         android:textStyle="bold"
         android:visibility="gone"
         tools:visibility="visible" />
@@ -138,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Result:"
-        android:textColor="#4A8DDF"
+        android:textColor="#FFD700"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="100dp"

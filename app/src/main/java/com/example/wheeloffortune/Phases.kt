@@ -8,7 +8,13 @@ object Phases {
         "LAMBORGHINI",
         "TO BE OR NOT TO BE",
         "GOOGLE",
-        "KOTLIN")
+        "KOTLIN",
+        "APPLE",
+        "FOOTBALL",
+        "BEER",
+        "MICHAEL JACKSON"
+
+    )
 
 
     val categories = listOf(
@@ -18,7 +24,13 @@ object Phases {
         "Sports Car",
         "Shakespeare",
         "Search Engine",
-        "Programming Language"
+        "Programming Language",
+        "Tech Company",
+        "A sport",
+        "Beverage",
+        "Artist"
+
+
 
     )
 }

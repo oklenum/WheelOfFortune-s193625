@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/dark_background.xml" value="0.16203703703703703" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.33611111111111114" />
         <entry key="app/src/main/res/drawable/main_background.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -11,7 +12,7 @@
         <entry key="app/src/main/res/layout/fragment_item.xml" value="0.2859375" />
         <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.2859375" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_rules.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_rules.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_title.xml" value="0.1585612968591692" />
         <entry key="app/src/main/res/layout/rules_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/word_view.xml" value="0.25" />

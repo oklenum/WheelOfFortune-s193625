@@ -13,7 +13,7 @@ class GameManager {
     private var randomValue: Int = 0
     private var currentSpin = 0
     private var randomIndex = Random.nextInt(0, Phases.phases.size)
-    val scoreList = mutableListOf<Int>()
+    private val scoreList = mutableListOf<Int>()
 
     fun startNewGame(): GameState {
         lettersUsed = ""
@@ -21,7 +21,6 @@ class GameManager {
         currentScore = 0
         currentSpin = 0
         scoreList.clear()
-        //randomIndex = Random.nextInt(0, Phases.phases.size)
         wordToGuess = Phases.phases[randomIndex]
         generateUnderscores(wordToGuess)
 
@@ -99,9 +98,14 @@ class GameManager {
         return getGameState()
     }
 
+    fun getWinResult(): Int {
+        currentScore = scoreList.sum()
+        return this.currentScore
+    }
+
     private fun getGameState(): GameState {
         if (underscoreWord.equals(wordToGuess, true)) {
-            return GameState.Won(wordToGuess)
+            return GameState.Won(wordToGuess, currentScore)
         }
 
         if (currentLifes <= 0) {

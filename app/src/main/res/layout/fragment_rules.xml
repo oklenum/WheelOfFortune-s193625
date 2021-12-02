@@ -9,6 +9,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         android:clipToPadding="false"
         android:padding="16dp"
         tools:listitem="@layout/rules_view" />
@@ -19,10 +20,21 @@
         android:layout_marginStart="100dp"
         android:id="@+id/backButton"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="650dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#FF9800"
         android:text="Back to game"
         android:textColor="#424242" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Rules"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:layout_gravity="center_horizontal"
+        />
 
 </FrameLayout>
