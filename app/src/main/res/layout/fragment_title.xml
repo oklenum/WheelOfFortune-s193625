@@ -34,6 +34,6 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/toppng_com_wheel_of_fortune_logo_629x629" />
+        android:src="@drawable/wheel_logo_frontscreen" />
 
 </FrameLayout>

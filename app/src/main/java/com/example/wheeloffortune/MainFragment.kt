@@ -78,15 +78,16 @@ class MainFragment : Fragment() {
         lettersLayout.visibility = View.GONE
         //randomValue = Values.values.random()
         wheelResultTextView.text = ("Spin to play!")
+        categoryTextView.text = Phases.categories[gameManager.getPhasesIndex()]
         newGame.setOnClickListener {
             val alertBuilder = AlertDialog.Builder(this.context)
             alertBuilder.setMessage("Are you sure you want to start new game?")
                 .setCancelable(false)
-                .setPositiveButton("Yes") { dialog, id ->
+                .setPositiveButton("Yes") { _, _ ->
                     startNewGame()
                     Toast.makeText(activity,"New Game Started!", Toast.LENGTH_LONG).show()
                 }
-                .setNegativeButton("No") { dialog, id ->
+                .setNegativeButton("No") { dialog, _ ->
                     dialog.cancel()
                 }
             val alert = alertBuilder.create()
@@ -130,8 +131,8 @@ class MainFragment : Fragment() {
         lettersLayout.children.forEach { letterView ->
             if (letterView is TextView) {
                 letterView.setOnClickListener {
-                    val gameState = gameManager.play((letterView).text[0])
-                    updateUI(gameState)
+                    val lettersState = gameManager.play((letterView).text[0])
+                    updateUI(lettersState)
                     letterView.visibility = View.GONE
                     lettersLayout.visibility = View.GONE
                     spinWheel.visibility = View.VISIBLE
@@ -180,6 +181,7 @@ class MainFragment : Fragment() {
         val gameState = gameManager.startNewGame()
         spinWheel.visibility = View.VISIBLE
         wheelResultTextView.text = "Spin to play!"
+        categoryTextView.text = Phases.categories[gameManager.getPhasesIndex()]
         currentLifesTextView.visibility = View.VISIBLE
         lettersLayout.visibility = View.GONE
         lettersLayout.children.forEach { letterView ->
