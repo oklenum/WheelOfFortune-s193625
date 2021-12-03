@@ -9,11 +9,6 @@ import androidx.navigation.Navigation
 import com.example.wheeloffortune.databinding.FragmentTitleBinding
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [TitleFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TitleFragment : Fragment() {
     lateinit var binding:FragmentTitleBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +30,5 @@ class TitleFragment : Fragment() {
         }
         // Inflate the layout for this fragment
         return binding.root
-
     }
-
-
 }

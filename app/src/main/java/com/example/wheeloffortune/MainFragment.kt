@@ -28,11 +28,7 @@ import kotlinx.coroutines.withTimeout
 import kotlin.concurrent.timer
 import kotlin.math.absoluteValue
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class MainFragment : Fragment() {
     private val gameManager = GameManager()
     private var _binding: FragmentMainBinding? = null
@@ -143,12 +139,12 @@ class MainFragment : Fragment() {
                 currentLifesTextView.text = "Lifes left: ${gameState.currentLifes}"
                 currentScoreTextView.text = "Current Score: ${gameState.currentScore}"
             }
-            is GameState.Won -> showGameWon(gameState.wordToGuess)
-            is GameState.Lost -> showGameLost(gameState.wordToGuess)
+            is GameState.Won -> gameWon(gameState.wordToGuess)
+            is GameState.Lost -> gameLost(gameState.wordToGuess)
         }
     }
 
-    private fun showGameLost(wordToGuess: String) {
+    private fun gameLost(wordToGuess: String) {
         wordTextView.text = wordToGuess
         gameLostTextView.visibility = View.VISIBLE
         currentLifesTextView.visibility = View.VISIBLE
@@ -156,32 +152,13 @@ class MainFragment : Fragment() {
         lettersLayout.visibility = View.GONE
     }
 
-    private fun showGameWon(wordToGuess: String) {
+    private fun gameWon(wordToGuess: String) {
         wordTextView.text = wordToGuess
         gameWonTextView.visibility = View.VISIBLE
         currentLifesTextView.visibility = View.VISIBLE
         currentScoreTextView.text = "Current Score: ${gameManager.getWinResult()}"
         lettersLayout.visibility = View.GONE
     }
-
-    /*
-    private fun startNewGame() {
-        gameLostTextView.visibility = View.GONE
-        gameWonTextView.visibility = View.GONE
-        val gameState = gameManager.startNewGame()
-        spinWheel.visibility = View.VISIBLE
-        wheelResultTextView.text = "Spin to play!"
-        categoryTextView.text = Phases.categories[gameManager.getPhasesIndex()]
-        currentLifesTextView.visibility = View.VISIBLE
-        lettersLayout.visibility = View.GONE
-        lettersLayout.children.forEach { letterView ->
-            letterView.visibility = View.VISIBLE
-        }
-        updateUI(gameState)
-    }
-
-     */
-
 
     override fun onDestroy() {
         super.onDestroy()

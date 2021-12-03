@@ -10,6 +10,9 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * WordAdapter developed with inspiration from lesson 7 in course 62550
+ */
 class WordAdapter(context: Context) :
     RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 

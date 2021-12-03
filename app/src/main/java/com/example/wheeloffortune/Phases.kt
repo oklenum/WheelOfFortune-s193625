@@ -13,7 +13,6 @@ object Phases {
         "FOOTBALL",
         "BEER",
         "MICHAEL JACKSON"
-
     )
 
 
@@ -26,11 +25,8 @@ object Phases {
         "Search Engine",
         "Programming Language",
         "Tech Company",
-        "A sport",
+        "Sport",
         "Beverage",
         "Artist"
-
-
-
     )
 }

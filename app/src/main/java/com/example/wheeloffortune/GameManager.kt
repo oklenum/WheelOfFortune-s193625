@@ -7,7 +7,6 @@ class GameManager {
     private var lettersUsed: String = ""
     private lateinit var underscoreWord: String
     private lateinit var wordToGuess: String
-    private val maxLifes = 0
     private var currentLifes = 5
     private var currentScore = 0
     private var randomValue: Int = 0
@@ -31,6 +30,12 @@ class GameManager {
         return randomIndex
     }
 
+    /**
+     * Functions to generate underscores and reveal hidden letters
+     * are inspired from this repository:
+     * https://github.com/usmaanz/Hangman
+     * Repository inspired the letter layout on the main layout as well
+     */
 
     fun generateUnderscores(word: String) {
         val stringBuilder = StringBuilder()
@@ -105,7 +110,7 @@ class GameManager {
 
     private fun getGameState(): GameState {
         if (underscoreWord.equals(wordToGuess, true)) {
-            return GameState.Won(wordToGuess, currentScore)
+            return GameState.Won(wordToGuess)
         }
 
         if (currentLifes <= 0) {
